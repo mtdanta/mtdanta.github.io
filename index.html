@@ -3,106 +3,368 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mario Torres-Danta | Website </title>
+    <title>Mario Torres-Danta</title>
+    <meta name="description" content="Mario Torres-Danta, mathematics student at the University of Seville. Geometric and algebraic topology, mapping class groups, representation theory.">
+    <meta name="author" content="Mario Torres-Danta">
+    <meta property="og:title" content="Mario Torres-Danta">
+    <meta property="og:description" content="Mathematics student at the University of Seville. Geometric and algebraic topology, mapping class groups, representation theory.">
+    <meta property="og:type" content="profile">
+    <meta property="og:url" content="https://mtdanta.github.io/">
+    <link rel="canonical" href="https://mtdanta.github.io/">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231c2b5a'/%3E%3Ctext x='32' y='43' font-family='Palatino,Georgia,serif' font-size='30' fill='white' text-anchor='middle'%3EMT%3C/text%3E%3C/svg%3E">
     <style>
+        :root {
+            --bg: #fdfdfb;
+            --text: #222;
+            --muted: #5d5d5d;
+            --accent: #1c2b5a;      /* same navy family as the CV */
+            --link: #2a4a9b;
+            --rule: #d9d9d4;
+            --tag-bg: #eef1f8;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #15171c;
+                --text: #e6e6e3;
+                --muted: #a3a3a0;
+                --accent: #b9c7ee;
+                --link: #8fb0ff;
+                --rule: #34373f;
+                --tag-bg: #232838;
+            }
+        }
+
+        * { box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family: "Palatino Linotype", Palatino, "Book Antiqua", "TeX Gyre Pagella", Georgia, serif;
+            font-size: 18px;
             line-height: 1.6;
-            color: #333;
-            max-width: 800px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .page {
+            max-width: 760px;
             margin: 0 auto;
-            padding: 30px 20px;
+            padding: 48px 20px 64px;
         }
-        .header-container {
+
+        a { color: var(--link); text-decoration: none; }
+        a:hover, a:focus-visible { text-decoration: underline; }
+
+        /* ---------- Header ---------- */
+        header {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            margin-bottom: 25px;
-        }
-        .header-text {
-            flex: 1;
-        }
-        h1 {
-            margin-bottom: 5px;
-            font-size: 2.2em;
-        }
-        .contact-info {
-            color: #555;
-            font-size: 0.95em;
-        }
-        a {
-            color: #0056b3;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
+            gap: 28px;
+            margin-bottom: 8px;
         }
         .profile-pic {
-            width: 160px;
-            height: 160px;
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
             object-fit: cover;
-            margin-left: 20px;
-            border: 3px solid #f0f0f0;
+            flex-shrink: 0;
+            border: 1px solid var(--rule);
         }
+        h1 {
+            margin: 0 0 4px;
+            font-size: 2.2em;
+            font-weight: 700;
+            color: var(--accent);
+            line-height: 1.15;
+        }
+        .tagline {
+            margin: 0 0 10px;
+            color: var(--muted);
+            font-style: italic;
+        }
+        .contact {
+            margin: 0;
+            font-size: 0.95em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px 16px;
+        }
+        .contact .email { font-variant-numeric: lining-nums; }
+
+        /* ---------- Navigation ---------- */
+        nav {
+            margin: 28px 0 8px;
+            padding: 8px 0;
+            border-top: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            font-variant: small-caps;
+            letter-spacing: 0.04em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px 22px;
+        }
+        nav a { color: var(--accent); }
+
+        /* ---------- Sections ---------- */
         h2 {
-            border-bottom: 2px solid #333;
-            padding-bottom: 5px;
-            margin-top: 30px;
-            font-size: 1.4em;
+            margin: 40px 0 14px;
+            padding-bottom: 4px;
+            border-bottom: 1.5px solid var(--accent);
+            color: var(--accent);
+            font-size: 1.3em;
+            font-variant: small-caps;
+            letter-spacing: 0.03em;
         }
-        ul {
-            margin-bottom: 20px;
-            padding-left: 20px;
+        section { scroll-margin-top: 16px; }
+        p { margin: 0 0 12px; }
+
+        .entry { margin-bottom: 20px; }
+        .entry-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 12px;
+            flex-wrap: wrap;
         }
-        li {
-            margin-bottom: 10px;
+        .entry-title { font-weight: 700; }
+        .entry-date {
+            color: var(--muted);
+            font-style: italic;
+            font-size: 0.92em;
+            white-space: nowrap;
         }
-        ul ul {
-            margin-top: 10px;
+        .entry-place { color: var(--muted); font-style: italic; }
+        .entry p { margin: 4px 0 0; }
+
+        .interests {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 0;
+            margin: 14px 0 0;
+            list-style: none;
+        }
+        .interests li {
+            background: var(--tag-bg);
+            color: var(--accent);
+            padding: 2px 12px;
+            border-radius: 999px;
+            font-size: 0.9em;
+        }
+
+        ol.pubs { padding-left: 1.4em; margin: 0; }
+        ol.pubs li { margin-bottom: 14px; }
+        .pub-title { font-style: italic; }
+        .pub-meta { color: var(--muted); font-size: 0.95em; }
+        .me { font-weight: 700; }
+
+        .cv-button {
+            display: inline-block;
+            margin-top: 4px;
+            padding: 6px 18px;
+            border: 1.5px solid var(--accent);
+            border-radius: 6px;
+            color: var(--accent);
+            font-variant: small-caps;
+            letter-spacing: 0.04em;
+        }
+        .cv-button:hover, .cv-button:focus-visible {
+            background: var(--accent);
+            color: var(--bg);
+            text-decoration: none;
+        }
+
+        footer {
+            margin-top: 56px;
+            padding-top: 12px;
+            border-top: 1px solid var(--rule);
+            color: var(--muted);
+            font-size: 0.85em;
+        }
+
+        /* ---------- Mobile ---------- */
+        @media (max-width: 600px) {
+            body { font-size: 17px; }
+            .page { padding: 32px 16px 48px; }
+            header { flex-direction: column-reverse; align-items: flex-start; gap: 18px; }
+            .profile-pic { width: 120px; height: 120px; }
+            h1 { font-size: 1.9em; }
+            .entry-date { white-space: normal; }
+        }
+
+        @media print {
+            nav, .cv-button { display: none; }
+            body { background: white; color: black; }
         }
     </style>
 </head>
 <body>
-    
-    <div class="header-container">
-        <div class="header-text">
-            <h1>Mario Torres Danta</h1>
-            <div class="contact-info">
-                <code>mtdanta[at]outlook.com</code> | <a href="https://es.linkedin.com/in/mtdanta" target="_blank">LinkedIn</a> | Seville, Spain
+<div class="page">
+
+    <header>
+        <div>
+            <h1>Mario Torres-Danta</h1>
+            <p class="tagline">Undergraduate in Mathematics, University of Seville</p>
+            <p class="contact">
+                <span class="email">mtdanta [at] outlook [dot] com</span>
+                <a href="https://www.linkedin.com/in/mtdanta" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <span>Seville, Spain</span>
+            </p>
+        </div>
+        <img src="foto-perfil.jpeg" alt="Portrait of Mario Torres-Danta" class="profile-pic"
+             width="150" height="150" onerror="this.style.display='none'">
+    </header>
+
+    <nav aria-label="Sections">
+        <a href="#about">About</a>
+        <a href="#research">Research</a>
+        <a href="#publications">Publications</a>
+        <a href="#service">Service</a>
+        <a href="#cv">CV</a>
+    </nav>
+
+    <!-- ================= ABOUT ================= -->
+    <section id="about">
+        <h2>About Me</h2>
+        <p>
+            I am a final-year mathematics student at the University of Seville (2023&ndash;2027).
+            I am interested in topology and algebra, especially where the two meet: mapping class
+            groups and braid groups, homological stability, and the algebraic structures that
+            appear in representation theory.
+        </p>
+        <p>
+            I have carried out research at the University of Copenhagen with Prof.&nbsp;Nathalie Wahl
+            and at the Fields Institute with Prof.&nbsp;Alistair Savage and Dr.&nbsp;Yaolong Shen.
+            I am applying to master's and PhD programmes starting in 2027.
+        </p>
+        <ul class="interests" aria-label="Research interests">
+            <li>Geometric Topology</li>
+            <li>Mapping Class Groups</li>
+            <li>Braid Groups</li>
+            <li>Algebraic Topology</li>
+            <li>Homological Stability</li>
+            <li>Group Theory</li>
+            <li>Representation Theory</li>
+            <li>Category Theory</li>
+        </ul>
+    </section>
+
+    <!-- ================= RESEARCH ================= -->
+    <section id="research">
+        <h2>Research Experience</h2>
+
+        <div class="entry">
+            <div class="entry-head">
+                <span class="entry-title">Visiting Student &amp; Undergraduate Researcher</span>
+                <span class="entry-date">Aug 2026 &ndash; Sep 2026</span>
+            </div>
+            <div class="entry-place">University of Copenhagen, Denmark</div>
+            <p>
+                Research project on mapping class groups of surfaces, Teichmüller theory and Riemann
+                moduli spaces, including braid groups and homological stability. Supervised by
+                Prof.&nbsp;Nathalie Wahl. Resulted in a manuscript in preparation.
+            </p>
+        </div>
+
+        <div class="entry">
+            <div class="entry-head">
+                <span class="entry-title">FUSRP Undergraduate Researcher</span>
+                <span class="entry-date">Jun 2026 &ndash; Jul 2026</span>
+            </div>
+            <div class="entry-place">The Fields Institute for Research in Mathematical Sciences, Toronto, Canada</div>
+            <p>
+                Laurent symmetric functions and their relation to the representation theory of general
+                linear groups. Supervised by Prof.&nbsp;Alistair Savage and Dr.&nbsp;Yaolong Shen.
+                Resulted in a <a href="#publications">preprint</a>.
+            </p>
+        </div>
+
+        <div class="entry">
+            <div class="entry-head">
+                <span class="entry-title">Undergraduate Researcher</span>
+                <span class="entry-date">Sep 2025 &ndash; Jun 2026</span>
+            </div>
+            <div class="entry-place">Department of Geometry and Topology, University of Seville</div>
+            <p>Guided study of advanced topics in topology and group theory with Prof.&nbsp;Ramón J. Flores.</p>
+        </div>
+
+        <div class="entry">
+            <div class="entry-head">
+                <span class="entry-title">Undergraduate Researcher</span>
+                <span class="entry-date">Sep 2024 &ndash; Jun 2025</span>
+            </div>
+            <div class="entry-place">Department of Algebra, University of Seville</div>
+            <p>
+                Classification of homographies and homologies in real and complex projective spaces
+                with Prof.&nbsp;Francisco Castro Jiménez.
+            </p>
+        </div>
+    </section>
+
+    <!-- ================= PUBLICATIONS ================= -->
+    <section id="publications">
+        <h2>Publications and Manuscripts</h2>
+        <ol class="pubs" reversed>
+            <!--
+            Uncomment once Nathalie has confirmed the authorship and title:
+            <li>
+                <span class="me">M. Torres-Danta</span> and N. Wahl,
+                <span class="pub-title">The symmetric mapping class group of finite abelian branched covers</span>.
+                <span class="pub-meta">Manuscript in preparation (2026).</span>
+            </li>
+            -->
+            <li>
+                H. Fernandez, E. Kleinwort, T. Li and <span class="me">M. Torres-Danta</span>,
+                <span class="pub-title">Laurent symmetric functions</span>.
+                <span class="pub-meta">Preprint (2026).</span>
+                <a href="https://arxiv.org/abs/2609.15690" target="_blank" rel="noopener noreferrer">arXiv:2609.15690</a>
+                <br>
+                <span class="pub-meta">
+                    Laurent symmetric functions, orthonormal bases with respect to the Hall inner product,
+                    and applications to representations of GL<sub><i>n</i></sub> and GL<sub>&infin;</sub>.
+                </span>
+            </li>
+        </ol>
+    </section>
+
+    <!-- ================= SERVICE & HONOURS ================= -->
+    <section id="service">
+        <h2>Service and Distinctions</h2>
+        <div class="entry">
+            <div class="entry-head">
+                <span class="entry-title">Reviewer, zbMATH Open</span>
+                <span class="entry-date">Sep 2026 &ndash; present</span>
             </div>
         </div>
-        <!-- Cambia "foto-perfil.jpg" por el nombre exacto de tu archivo de imagen -->
-        <img src="foto-perfil.jpeg" alt="Mario Torres Danta" class="profile-pic">
-    </div>
+        <div class="entry">
+            <div class="entry-head">
+                <span class="entry-title">Collaboration Grant (<i>Beca de Colaboración</i>), Spanish Government</span>
+                <span class="entry-date">2026 &ndash; 2027</span>
+            </div>
+        </div>
+        <div class="entry">
+            <div class="entry-head">
+                <span class="entry-title">B.Sc. in Mathematics, GPA 8.74/10 (top 5% of cohort)</span>
+                <span class="entry-date">2023 &ndash; 2027</span>
+            </div>
+            <p>Highest distinction (<i>Matrícula de Honor</i>) in General Topology, Measure Theory, Numerical Analysis, Ordinary Differential Equations, Probability Theory and Mathematical Optimization.</p>
+        </div>
+    </section>
 
-    <h2>About Me</h2>
-    <p>Undergraduate Mathematics student at the University of Seville (2023–2027) with a deep interest in algebraic and topological structures. My primary research focus centers on <strong>Algebraic Topology</strong> (Homology, Cohomology, Homotopy Theory), <strong>Abstract Algebra</strong> (Group and Ring Theory), <strong>Category Theory</strong>, and <strong>Representation Theory</strong>.</p>
+    <!-- ================= CV ================= -->
+    <section id="cv">
+        <h2>Curriculum Vitae</h2>
+        <p>
+            <a class="cv-button" href="Mario_Torres_Danta_CV.pdf" target="_blank" rel="noopener">Download CV (PDF)</a>
+        </p>
+    </section>
 
-    <h2>Research Experience</h2>
-    <ul>
-        <li><strong>University of Copenhagen (Denmark)</strong> | <em>Visiting Student & Undergraduate Researcher</em> (Aug 2026 – Sep 2026)<br>
-        Guided project on <em>Mapping Class Groups</em>, Teichmüller and Riemann moduli spaces, Braid Theory, and related advanced topics, supervised by Prof. Nathalie Wahl.</li>
-        <li><strong>The Fields Institute (Toronto, Canada)</strong> | <em>FUSRP Researcher</em> (Jun 2026 – Jul 2026)<br>
-        Project on Laurent symmetric functions and their connection to representation theory, supervised by Prof. Alistair Savage and Dr. Yaolong Shen. <em>(Co-author of the paper "Laurent Symmetric Functions", 2026)</em>.</li>
-        <li><strong>University of Seville (Spain)</strong> | <em>Departmental Research Assistant</em>
-            <ul>
-                <li><em>Dept. of Geometry and Topology</em> (Sep 2025 – Jun 2026): Advanced study in Topology and Group Theory with Prof. Ramón J. Flores.</li>
-                <li><em>Dept. of Algebra</em> (Sep 2024 – Jun 2025): Classification of homographies and homologies in real and complex projective spaces with Prof. Francisco Castro Jiménez.</li>
-            </ul>
-        </li>
-    </ul>
+    <footer>
+        Last updated: October 2026
+    </footer>
 
-    <h2>Publications and Manuscripts</h2>
-    <ul>
-<li><em>Laurent Symmetric Functions</em> (2026) – Co-author alongside H. Fernandez, E. Kleinwort, and T. Li. Study of the polynomial ring and Laurent symmetric functions, orthonormal bases via the Hall inner product, and their application to representations of the general linear groups GL<sub>n</sub> and GL<sub>&infin;</sub>. [<a href="https://arxiv.org/pdf/2609.15690" target="_blank" rel="noopener noreferrer">See document here</a>]</li> 
-    </ul>
-    <h2>Academic Service</h2>
-    <ul>
-    <li><strong>Reviewer in zbMATH Open</strong> | (September 2026 - Present) </li>
-    </ul>
-    <h2>CV</h2>
-    <!-- Cambia "https://tu-enlace-al-cv.pdf" por el enlace de tu documento -->
-    <p>You can find my full CV <a href="Mario_Torres_Danta_CV.pdf" target="_blank">here</a>.</p>
+</div>
 </body>
 </html>
