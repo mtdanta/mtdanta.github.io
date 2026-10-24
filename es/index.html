@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mario Torres Danta | Matemáticas, Universidad de Sevilla</title>
+    <meta name="description" content="Mario Torres Danta (M. Torres-Danta), estudiante de Matemáticas en la Universidad de Sevilla. Investigación en topología algebraica y geométrica: grupos modulares de superficies (mapping class groups), grupos de trenzas, estabilidad homológica, K-teoría.">
+    <meta name="author" content="Mario Torres Danta">
+    <meta property="og:title" content="Mario Torres Danta | Matemáticas, Universidad de Sevilla">
+    <meta property="og:description" content="Estudiante de Matemáticas en la Universidad de Sevilla. Topología algebraica y geométrica, mapping class groups, estabilidad homológica, K-teoría.">
+    <meta property="og:locale" content="es_ES">
+    <meta property="og:type" content="profile">
+    <meta property="og:url" content="https://mtdanta.github.io/es/">
+    <link rel="canonical" href="https://mtdanta.github.io/es/">
+    <link rel="alternate" hreflang="en" href="https://mtdanta.github.io/">
+    <link rel="alternate" hreflang="es" href="https://mtdanta.github.io/es/">
+    <link rel="alternate" hreflang="x-default" href="https://mtdanta.github.io/">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231c2b5a'/%3E%3Ctext x='32' y='43' font-family='Palatino,Georgia,serif' font-size='30' fill='white' text-anchor='middle'%3EMT%3C/text%3E%3C/svg%3E">
+    <style>
+        :root {
+            --bg: #fdfdfb;
+            --text: #222;
+            --muted: #5d5d5d;
+            --accent: #1c2b5a;      /* same navy family as the CV */
+            --link: #2a4a9b;
+            --rule: #d9d9d4;
+            --tag-bg: #eef1f8;
+            color-scheme: light;
+        }
+        :root[data-theme="dark"] {
+            --bg: #15171c;
+            --text: #e6e6e3;
+            --muted: #a3a3a0;
+            --accent: #b9c7ee;
+            --link: #8fb0ff;
+            --rule: #34373f;
+            --tag-bg: #232838;
+            color-scheme: dark;
+        }
+
+        * { box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family: "Palatino Linotype", Palatino, "Book Antiqua", "TeX Gyre Pagella", Georgia, serif;
+            font-size: 18px;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .page {
+            position: relative;
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 48px 20px 64px;
+        }
+
+        /* ---------- Light / dark switch ---------- */
+        .theme-switch {
+            position: absolute;
+            top: 14px;
+            right: 20px;
+            width: 62px;
+            height: 32px;
+            padding: 0;
+            border: 1px solid var(--rule);
+            border-radius: 999px;
+            background: var(--tag-bg);
+            cursor: pointer;
+            transition: background 0.3s, border-color 0.3s;
+        }
+        .theme-switch:hover, .theme-switch:focus-visible { border-color: var(--accent); }
+        .theme-switch .knob {
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #fff;
+            color: #e0a100;              /* sun colour */
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease, background 0.3s, color 0.3s;
+        }
+        .theme-switch svg { width: 16px; height: 16px; }
+        .theme-switch .icon-moon { display: none; }
+        :root[data-theme="dark"] .theme-switch .knob {
+            transform: translateX(30px);
+            background: #2c3350;
+            color: #e8ecff;              /* moon colour */
+        }
+        :root[data-theme="dark"] .theme-switch .icon-sun { display: none; }
+        :root[data-theme="dark"] .theme-switch .icon-moon { display: block; }
+
+        /* ---------- Language switch ---------- */
+        .lang-switch {
+            position: absolute;
+            top: 17px;
+            right: 96px;
+            font-variant: small-caps;
+            letter-spacing: 0.05em;
+            font-size: 0.95em;
+            color: var(--muted);
+        }
+        .lang-switch .current { color: var(--accent); font-weight: 700; }
+        .lang-switch .sep { margin: 0 4px; }
+
+        a { color: var(--link); text-decoration: none; }
+        a:hover, a:focus-visible { text-decoration: underline; }
+
+        /* ---------- Header ---------- */
+        header {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            margin-bottom: 8px;
+        }
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            flex-shrink: 0;
+            border: 1px solid var(--rule);
+        }
+        h1 {
+            margin: 0 0 4px;
+            font-size: 2.2em;
+            font-weight: 700;
+            color: var(--accent);
+            line-height: 1.15;
+        }
+        .tagline {
+            margin: 0 0 10px;
+            color: var(--muted);
+            font-style: italic;
+        }
+        .contact {
+            margin: 0;
+            font-size: 0.95em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px 16px;
+        }
+        .contact .email { font-variant-numeric: lining-nums; }
+
+        /* ---------- Navigation ---------- */
+        nav {
+            margin: 28px 0 8px;
+            padding: 8px 0;
+            border-top: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            font-variant: small-caps;
+            letter-spacing: 0.04em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px 22px;
+        }
+        nav a { color: var(--accent); }
+
+        /* ---------- Sections ---------- */
+        h2 {
+            margin: 40px 0 14px;
+            padding-bottom: 4px;
+            border-bottom: 1.5px solid var(--accent);
+            color: var(--accent);
+            font-size: 1.3em;
+            font-variant: small-caps;
+            letter-spacing: 0.03em;
+        }
+        section { scroll-margin-top: 16px; }
+        p { margin: 0 0 12px; }
+
+        .entry { margin-bottom: 20px; }
+        .entry-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .entry-title { font-weight: 700; }
+        .entry-date {
+            color: var(--muted);
+            font-style: italic;
+            font-size: 0.92em;
+            white-space: nowrap;
+        }
+        .entry-place { color: var(--muted); font-style: italic; }
+        .entry p { margin: 4px 0 0; }
+        .entry .supervisor { margin-top: 2px; color: var(--muted); font-size: 0.95em; }
+
+        .interests {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 0;
+            margin: 14px 0 0;
+            list-style: none;
+        }
+        .interests li {
+            background: var(--tag-bg);
+            color: var(--accent);
+            padding: 2px 12px;
+            border-radius: 999px;
+            font-size: 0.9em;
+        }
+
+        ol.pubs { padding-left: 1.4em; margin: 0; }
+        ol.pubs li { margin-bottom: 14px; }
+        .pub-title { font-style: italic; }
+        .pub-meta { color: var(--muted); font-size: 0.95em; }
+        .me { font-weight: 700; }
+
+        .cv-button {
+            display: inline-block;
+            margin: 4px 10px 4px 0;
+            padding: 6px 18px;
+            border: 1.5px solid var(--accent);
+            border-radius: 6px;
+            color: var(--accent);
+            font-variant: small-caps;
+            letter-spacing: 0.04em;
+        }
+        .cv-button:hover, .cv-button:focus-visible {
+            background: var(--accent);
+            color: var(--bg);
+            text-decoration: none;
+        }
+
+        footer {
+            margin-top: 56px;
+            padding-top: 12px;
+            border-top: 1px solid var(--rule);
+            color: var(--muted);
+            font-size: 0.85em;
+        }
+
+        /* ---------- Mobile ---------- */
+        @media (max-width: 600px) {
+            body { font-size: 17px; }
+            .page { padding: 32px 16px 48px; }
+            .theme-switch { top: 12px; right: 16px; }
+            .lang-switch { top: 15px; right: 90px; }
+            header { flex-direction: column-reverse; align-items: flex-start; gap: 18px; }
+            .profile-pic { width: 120px; height: 120px; }
+            h1 { font-size: 1.9em; }
+            .entry-date { white-space: normal; }
+        }
+
+        @media print {
+            nav, .cv-button, .theme-switch, .lang-switch { display: none; }
+            body { background: white; color: black; }
+        }
+    </style>
+    <script>
+        /* Apply the saved theme before the page is drawn (light by default) */
+        try {
+            if (localStorage.getItem('theme') === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        } catch (e) {}
+    </script>
+</head>
+<body>
+<div class="page">
+
+    <button class="theme-switch" id="theme-switch" type="button" role="switch" aria-checked="false" aria-label="Modo oscuro" title="Modo claro / oscuro">
+        <span class="knob">
+            <!-- Sun: light mode -->
+            <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="4.5"/>
+                <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+            </svg>
+            <!-- Moon: dark mode -->
+            <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>
+            </svg>
+        </span>
+    </button>
+
+    <div class="lang-switch">
+        <a href="../" hreflang="en" lang="en" title="English version">EN</a><span class="sep">|</span><span class="current" aria-current="page">ES</span>
+    </div>
+
+    <header>
+        <div>
+            <h1>Mario Torres Danta</h1>
+            <p class="tagline">Estudiante de Matemáticas, Universidad de Sevilla</p>
+            <p class="tagline">En publicaciones: <em>M. Torres-Danta</em></p>
+            <p class="contact">
+                <span class="email">mtdanta [arroba] outlook [punto] com</span>
+                <a href="https://www.linkedin.com/in/mtdanta" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <span>Sevilla, España</span>
+            </p>
+        </div>
+        <img src="../foto-perfil.jpeg" alt="Retrato de Mario Torres Danta" class="profile-pic"
+             width="150" height="150" onerror="this.style.display='none'">
+    </header>
+
+    <nav aria-label="Secciones">
+        <a href="#about">Sobre mí</a>
+        <a href="#research">Investigación</a>
+        <a href="#publications">Publicaciones</a>
+        <a href="#talks">Charlas</a>
+        <a href="#service">Méritos</a>
+        <a href="#cv">CV</a>
+    </nav>
+
+    <!-- ================= ABOUT ================= -->
+    <section id="about">
+        <h2>Sobre mí</h2>
+        <p>
+            Estudio cuarto del Grado en Matemáticas en la Universidad de Sevilla (2023&ndash;2027).
+            Lo que más me atrae es la topología y el álgebra, y en especial ese punto en que se cruzan:
+            una pregunta geométrica que acaba siendo un cálculo dentro de un grupo, o una estructura
+            algebraica que, de pronto, describe un espacio. No me cierro a un único tema: me interesan
+            la teoría de homotopía, la homología, la teoría de grupos, los espacios de móduli o la K-teoría.
+            Disfruto especialmente cuando un resultado tira de ideas de sitios muy distintos y salen a la luz
+            conexiones entre áreas que, en principio, no tenían nada que ver.
+        </p>
+        <p>
+            He hecho estancias de investigación en la Universidad de Copenhague, con la Prof.&nbsp;Nathalie Wahl,
+            y en el Fields Institute de Toronto, con el Prof.&nbsp;Alistair Savage y el Dr.&nbsp;Yaolong Shen.
+            Este curso hago mi Trabajo Fin de Grado sobre K-teoría, dirigido por el Prof.&nbsp;Ramón J. Flores,
+            y preparo la solicitud de máster y doctorado para empezar en 2027.
+        </p>
+        <ul class="interests" aria-label="Intereses de investigación">
+            <li>Topología algebraica</li>
+            <li>Teoría de homotopía</li>
+            <li>Estabilidad homológica</li>
+            <li>Topología geométrica</li>
+            <li>Mapping class groups</li>
+            <li>Grupos de trenzas</li>
+            <li>Espacios de móduli</li>
+            <li>K-teoría algebraica</li>
+            <li>Teoría de grupos</li>
+            <li>Teoría de categorías</li>
+        </ul>
+    </section>
+
+    <!-- ================= RESEARCH ================= -->
+    <section id="research">
+        <h2>Experiencia investigadora</h2>
+
+        <div class="entry">
+            <div class="entry-head">
+                <span class="entry-title">Estancia de investigación</span>
+                <span class="entry-date">ago. 2026 &ndash; sept. 2026</span>
+            </div>
+            <div class="entry-place">Universidad de Copenhague, Dinamarca</div>
+            <p>
+                Mapping class groups de recubrimientos ramificados de superficies con grupo de automorfismos
+                abeliano finito. Demostré que los grupos levantable y simétrico son grupos de trenzas mixtos,
+                di los levantamientos de forma explícita (mediante chain twists y multi-Dehn twists) y obtuve
+                resultados de estabilidad homológica. El trabajo está recogido en un
+                <a href="#publications">manuscrito en preparación</a>.
+            </p>
+            <p class="supervisor">Dirigido por la Prof.&nbsp;Nathalie Wahl</p>
+        </div>
+
+        <div class="entry">
+            <div class="entry-head">
+                <span class="entry-title">Estancia de investigación (programa FUSRP)</span>
+                <span class="entry-date">jun. 2026 &ndash; jul. 2026</span>
+            </div>
+            <div class="entry-place">The Fields Institute for Research in Mathematical Sciences, Toronto, Canadá</div>
+            <p>
+                Funciones simétricas de Laurent: la generalización de las funciones simétricas clásicas que
+                permite tratar las representaciones racionales de los grupos lineales. Estudiamos su estructura
+                de anillo, construimos bases ortonormales para el producto de Hall y las aplicamos a las
+                representaciones de GL<sub><i>n</i></sub> y GL<sub>&infin;</sub>. El resultado es un
+                <a href="#publications">preprint</a> en arXiv.
+            </p>
+            <p class="supervisor">Dirigido por el Prof.&nbsp;Alistair Savage y el Dr.&nbsp;Yaolong Shen</p>
+        </div>
+
+        <div class="entry">
+            <div class="entry-head">
+                <span class="entry-title">Trabajo Fin de Grado (en curso)</span>
+                <span class="entry-date">2026 &ndash; 2027</span>
+            </div>
+            <div class="entry-place">Universidad de Sevilla</div>
+            <p><i>Introducción a la K-teoría</i></p>
+            <p class="supervisor">Dirigido por el Prof.&nbsp;Ramón J. Flores</p>
+        </div>
+
+        <div class="entry">
+            <div class="entry-head">
+                <span class="entry-title">Alumno colaborador</span>
+                <span class="entry-date">sept. 2025 &ndash; jun. 2026</span>
+            </div>
+            <div class="entry-place">Departamento de Geometría y Topología, Universidad de Sevilla</div>
+            <p>Estudio dirigido de temas de topología y teoría de grupos que van más allá del temario del grado.</p>
+            <p class="supervisor">Dirigido por el Prof.&nbsp;Ramón J. Flores</p>
+        </div>
+
+        <div class="entry">
+            <div class="entry-head">
+                <span class="entry-title">Alumno colaborador</span>
+                <span class="entry-date">sept. 2024 &ndash; jun. 2025</span>
+            </div>
+            <div class="entry-place">Departamento de Álgebra, Universidad de Sevilla</div>
+            <p>
+                Clasificación de las homografías y homologías de los espacios proyectivos real y complejo.
+            </p>
+            <p class="supervisor">Dirigido por el Prof.&nbsp;Francisco Castro Jiménez</p>
+        </div>
+    </section>
+
+    <!-- ================= PUBLICATIONS ================= -->
+    <section id="publications">
+        <h2>Publicaciones y manuscritos</h2>
+        <ol class="pubs" reversed>
+            <li>
+                <span class="me">M. Torres-Danta</span>,
+                <span class="pub-title">The symmetric mapping class group of finite abelian branched covers</span>.
+                <span class="pub-meta">Manuscrito en preparación (2026).</span>
+            </li>
+            <li>
+                H. Fernandez, E. Kleinwort, T. Li y <span class="me">M. Torres-Danta</span>,
+                <span class="pub-title">Laurent symmetric functions</span>.
+                <span class="pub-meta">Preprint (2026).</span>
+                <a href="https://arxiv.org/abs/2609.15690" target="_blank" rel="noopener noreferrer">arXiv:2609.15690</a>
+                <br>
+                <span class="pub-meta">
+                    Bases ortonormales para el producto de Hall y aplicaciones a las representaciones
+                    de GL<sub><i>n</i></sub> y GL<sub>&infin;</sub>.
+                </span>
+            </li>
+        </ol>
+    </section>
+
+    <!-- ================= TALKS ================= -->
+    <section id="talks">
+        <h2>Charlas</h2>
+        <div class="entry">
+            <div class="entry-head">
+                <span class="entry-title"><i>Symmetric mapping class groups of finite abelian branched covers</i></span>
+                <span class="entry-date">sept. 2026</span>
+            </div>
+            <div class="entry-place">Department of Mathematical Sciences, Universidad de Copenhague</div>
+        </div>
+        <div class="entry">
+            <div class="entry-head">
+                <span class="entry-title"><i>Laurent symmetric functions</i></span>
+                <span class="entry-date">jul. 2026</span>
+            </div>
+            <div class="entry-place">Presentación final, Fields Undergraduate Summer Research Program, Fields Institute, Toronto</div>
+        </div>
+    </section>
+
+    <!-- ================= SERVICE & HONOURS ================= -->
+    <section id="service">
+        <h2>Méritos y distinciones</h2>
+        <div class="entry">
+            <div class="entry-head">
+                <span class="entry-title">Reseñador en zbMATH Open</span>
+                <span class="entry-date">sept. 2026 &ndash; actualidad</span>
+            </div>
+        </div>
+        <div class="entry">
+            <div class="entry-head">
+                <span class="entry-title">Beca de Colaboración, Gobierno de España</span>
+                <span class="entry-date">2026 &ndash; 2027</span>
+            </div>
+        </div>
+        <div class="entry">
+            <div class="entry-head">
+                <span class="entry-title">Grado en Matemáticas: nota media de 8,74 sobre 10, entre el 5&nbsp;% mejor de la promoción</span>
+                <span class="entry-date">2023 &ndash; 2027</span>
+            </div>
+            <p>Matrícula de Honor en Topología General, Lógica Matemática, Teoría de la Medida, Análisis Numérico, Ecuaciones Diferenciales Ordinarias, Teoría de la Probabilidad y Optimización Matemática.</p>
+        </div>
+    </section>
+
+    <!-- ================= CV ================= -->
+    <section id="cv">
+        <h2>Currículum</h2>
+        <p>
+            <a class="cv-button" href="../Mario Torres-Danta CV ES.pdf" target="_blank" rel="noopener">Descargar CV (español)</a>
+            <a class="cv-button" href="../Mario Torres-Danta CV.pdf" target="_blank" rel="noopener" hreflang="en">CV en inglés</a>
+        </p>
+    </section>
+
+    <footer>
+        Última actualización: octubre de 2026
+    </footer>
+
+</div>
+
+<script>
+    /* Light / dark switch: remembers the visitor's choice */
+    (function () {
+        var root = document.documentElement;
+        var sw = document.getElementById('theme-switch');
+        sw.setAttribute('aria-checked', root.getAttribute('data-theme') === 'dark' ? 'true' : 'false');
+        sw.addEventListener('click', function () {
+            var dark = root.getAttribute('data-theme') !== 'dark';
+            if (dark) { root.setAttribute('data-theme', 'dark'); }
+            else { root.removeAttribute('data-theme'); }
+            sw.setAttribute('aria-checked', dark ? 'true' : 'false');
+            try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch (e) {}
+        });
+    })();
+</script>
+</body>
+</html>
